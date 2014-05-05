@@ -50,19 +50,19 @@ object Main {
     if(coins.isEmpty) return 0
     else{
          
-      def separateCountChanges =  for(i <- 0 to (coins.length -1)) yield {	
+      def separateCountChanges =  for(i <- coins) yield {	
         
-        if(money == coins(i)) 1
+        if(money == i) 1
         else {
-          if(money < coins(i)) 0
-          else countChange(money - coins(i), coins)
+          if(money < i) 0
+          else countChange(money - i, coins)
         }
       }
             
       print(separateCountChanges.toString + "\n")
   
       
-      return separateCountChanges.sum
+      return if(separateCountChanges.forall(p => p == 1)) 1 else 0 
     }
   }
 }
