@@ -26,9 +26,9 @@ object Main {
      
     def balance(chars: List[Char], beginNumber: Int): Boolean = {
       
-      if(beginNumber == 0 && chars.length == 0) return true
+      if(beginNumber == 0 && chars.isEmpty) return true
       if(beginNumber < 0) return false
-      if(beginNumber > 0 && chars.length == 0) return false
+      if(beginNumber > 0 && chars.isEmpty) return false
       else {
         if(chars.head == '(') return balance(chars.tail, beginNumber + 1)
         if(chars.head == ')') return balance(chars.tail, beginNumber - 1)
@@ -42,5 +42,27 @@ object Main {
   /**
    * Exercise 3
    */
-  def countChange(money: Int, coins: List[Int]): Int = 2
+  def countChange(money: Int, coins: List[Int]): Int = {
+    
+    print(coins.toString + " money " + money +  "\n")
+    
+    if(money == 0) return 0
+    if(coins.isEmpty) return 0
+    else{
+         
+      def separateCountChanges =  for(i <- 0 to (coins.length -1)) yield {	
+        
+        if(money == coins(i)) 1
+        else {
+          if(money < coins(i)) 0
+          else countChange(money - coins(i), coins)
+        }
+      }
+            
+      print(separateCountChanges.toString + "\n")
+  
+      
+      return separateCountChanges.sum
+    }
+  }
 }
