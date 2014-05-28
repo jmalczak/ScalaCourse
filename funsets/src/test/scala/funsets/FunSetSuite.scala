@@ -131,12 +131,4 @@ class FunSetSuite extends FunSuite {
       assert(exists(s, (i: Int) => i > 0 && i < 2), "Exists")
     }
   }
-
-  test("map test") {
-    new TestSets {
-      val s = union(union(s1, s2), s3)
-      printSet(s)
-      printSet(map(s, p => p + 1))
-    }
-  }
 }
