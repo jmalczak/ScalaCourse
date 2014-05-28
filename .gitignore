@@ -8,6 +8,7 @@
 dist/*
 target/
 src_managed/
+lib_managed/
 project/boot/
 project/plugins/project/
 
